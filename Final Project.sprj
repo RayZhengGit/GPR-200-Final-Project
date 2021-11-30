@@ -22,28 +22,7 @@
 			<itemvalues />
 			<variables>
 				<variable type="float4x4" name="matVP" system="ViewProjection" />
-				<variable type="float4x4" name="matGeo" system="GeometryTransform" />
-				<variable type="float3" name="translation">
-					<row>
-						<value>0</value>
-						<value>0</value>
-						<value>0</value>
-					</row>
-				</variable>
-				<variable type="float3" name="rotation">
-					<row>
-						<value>0</value>
-						<value>0</value>
-						<value>0</value>
-					</row>
-				</variable>
-				<variable type="float3" name="scale">
-					<row>
-						<value>1</value>
-						<value>1</value>
-						<value>1</value>
-					</row>
-				</variable>
+				<variable type="float" name="time" system="Time" />
 			</variables>
 			<macros />
 		</pass>
@@ -54,13 +33,10 @@
 		<entry type="property" name="Simple" item="pipe" />
 		<entry type="file" name="Simple" shader="vs" />
 		<entry type="file" name="Simple" shader="ps" />
-		<entry type="pinned" name="translation" owner="Simple" />
-		<entry type="pinned" name="rotation" owner="Simple" />
-		<entry type="pinned" name="scale" owner="Simple" />
 		<entry type="camera" fp="false">
-			<distance>4</distance>
+			<distance>11</distance>
 			<pitch>28</pitch>
-			<yaw>317</yaw>
+			<yaw>126</yaw>
 			<roll>360</roll>
 		</entry>
 		<entry type="clearcolor" r="0" g="0" b="0" a="0" />

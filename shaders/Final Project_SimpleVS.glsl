@@ -1,25 +1,12 @@
 #version 330
 
 uniform mat4 matVP;
-uniform mat4 matGeo;
-
-uniform vec3 translation;
-uniform vec3 rotation;
-uniform vec3 scale;
+uniform float time;
 
 layout (location = 0) in vec3 pos;
 layout (location = 1) in vec3 normal;
 
 out vec4 color;
-
-mat4 translate(vec3 translation) {
-	return mat4(
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		translation.x, translation.y, translation.z, 1
-	);
-}
 
 mat4 rotate(vec3 rotation) {
 	mat4 matRotationX = mat4(
@@ -43,18 +30,13 @@ mat4 rotate(vec3 rotation) {
 	return matRotationZ * matRotationY * matRotationX;
 }
 
-mat4 matScale(vec3 factor) {
-	return mat4(
-		factor.x, 0, 0, 0,
-		0, factor.y, 0, 0,
-		0, 0, factor.z, 0,
-		0, 0, 0, 1
-	);
-}
-
 void main() {
-   color = vec4(abs(normal), 1.0);
-   
-   mat4 matModel = translate(translation) * rotate(rotation) * matScale(scale);
-   gl_Position = matVP * matModel * vec4(pos, 1);
+	// ToDo: apply metal texture
+	// This might be helpful... https://www.lighthouse3d.com/tutorials/glsl-tutorial/texturing-with-images/
+	color = vec4(abs(normal), 1.0);
+	
+	// Rotating Cube Animation
+	vec3 speed = vec3(0.25, 0.25, 0.25);
+	vec3 animation = vec3(time * speed);
+	gl_Position = matVP * rotate(animation) * vec4(pos, 1);
 }
