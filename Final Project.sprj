@@ -57,21 +57,22 @@
 		</pass>
 	</pipeline>
 	<objects>
-		<object type="texture" path="Assets\silver-metal-texture-background-design_46250-2268.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat">
+		<object type="texture" path="Assets\silver-metal-texture-background-design_46250-2268.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat" />
+		<object type="texture" path="Assets\stoney.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat" />
+		<object type="texture" path="Assets\metal-texture.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat">
 			<bind slot="0" name="Simple" />
 		</object>
 	</objects>
 	<cameras />
 	<settings>
-		<entry type="property" name="Sun" item="pipe" />
 		<entry type="file" name="SunShader" shader="vs" />
 		<entry type="file" name="SunShader" shader="ps" />
-		<entry type="file" name="Simple" shader="vs" />
 		<entry type="file" name="Simple" shader="ps" />
+		<entry type="file" name="Simple" shader="vs" />
 		<entry type="camera" fp="false">
-			<distance>12</distance>
-			<pitch>-4</pitch>
-			<yaw>86</yaw>
+			<distance>6</distance>
+			<pitch>-15</pitch>
+			<yaw>25</yaw>
 			<roll>360</roll>
 		</entry>
 		<entry type="clearcolor" r="0" g="0" b="0" a="0" />
