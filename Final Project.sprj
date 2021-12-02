@@ -27,7 +27,12 @@
 			<macros />
 		</pass>
 	</pipeline>
-	<objects />
+	<objects>
+		<object type="texture" path="..\..\..\Downloads\RandomShaders\Testimage.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat" />
+		<object type="texture" path="..\..\..\Downloads\RandomShaders\silver-metal-texture-background-design_46250-2268.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat">
+			<bind slot="0" name="Simple" />
+		</object>
+	</objects>
 	<cameras />
 	<settings>
 		<entry type="property" name="Simple" item="pipe" />

@@ -5,6 +5,10 @@ uniform float time;
 
 layout (location = 0) in vec3 pos;
 layout (location = 1) in vec3 normal;
+layout (location = 2) in vec2 textcoord;
+
+out vec2 uv;
+
 
 out vec4 color;
 
@@ -32,6 +36,7 @@ mat4 rotate(vec3 rotation) {
 
 void main() {
 	// ToDo: apply metal texture
+		uv = textcoord;
 	// This might be helpful... https://www.lighthouse3d.com/tutorials/glsl-tutorial/texturing-with-images/
 	color = vec4(abs(normal), 1.0);
 	
