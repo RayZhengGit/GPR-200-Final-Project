@@ -2,7 +2,7 @@
 
 uniform mat4 matVP;
 uniform float time;
-uniform vec3 speed;
+uniform vec3 boxSpeed;
 
 layout (location = 0) in vec3 pos;
 layout (location = 1) in vec2 texCoord;
@@ -33,7 +33,7 @@ mat4 rotate(vec3 rotation) {
 }
 
 void main() {
-	vec3 animation = vec3(time * speed);
+	vec3 animation = vec3(time * boxSpeed);
 	gl_Position = matVP * rotate(animation) * vec4(pos, 1);
 	uv = texCoord;
 }

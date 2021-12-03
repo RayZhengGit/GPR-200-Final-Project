@@ -2,7 +2,7 @@
 
 uniform mat4 matVP;
 uniform float time;
-uniform float speed;
+uniform float sunSpeed;
 
 layout (location = 0) in vec3 pos;
 
@@ -31,8 +31,8 @@ mat4 matScale(vec3 factor) {
 }
 
 void main() {
-	float sunX = RADIUS * cos(time * speed);
-	float sunY = RADIUS * sin(time * speed);
+	float sunX = RADIUS * cos(time * sunSpeed);
+	float sunY = RADIUS * sin(time * sunSpeed);
 	
 	mat4 myGeo = translate(vec3(sunX, sunY, 0)) * matScale(vec3(SCALE_FACTOR));
     gl_Position = matVP * myGeo * vec4(pos, 1);

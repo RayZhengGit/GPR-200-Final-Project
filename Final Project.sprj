@@ -22,7 +22,7 @@
 			<variables>
 				<variable type="float4x4" name="matVP" system="ViewProjection" />
 				<variable type="float" name="time" system="Time" />
-				<variable type="float3" name="speed">
+				<variable type="float3" name="boxSpeed">
 					<row>
 						<value>0.25</value>
 						<value>0.25</value>
@@ -55,9 +55,9 @@
 			<variables>
 				<variable type="float4x4" name="matVP" system="ViewProjection" />
 				<variable type="float" name="time" system="Time" />
-				<variable type="float" name="speed">
+				<variable type="float" name="sunSpeed">
 					<row>
-						<value>1</value>
+						<value>0.75</value>
 					</row>
 				</variable>
 			</variables>
@@ -71,11 +71,13 @@
 	</objects>
 	<cameras />
 	<settings>
-		<entry type="property" name="BoxShader" item="pipe" />
+		<entry type="property" name="SunShader" item="pipe" />
 		<entry type="file" name="BoxShader" shader="vs" />
 		<entry type="file" name="BoxShader" shader="ps" />
 		<entry type="file" name="SunShader" shader="vs" />
 		<entry type="file" name="SunShader" shader="ps" />
+		<entry type="pinned" name="boxSpeed" owner="BoxShader" />
+		<entry type="pinned" name="sunSpeed" owner="SunShader" />
 		<entry type="camera" fp="false">
 			<distance>11</distance>
 			<pitch>31</pitch>
