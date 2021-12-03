@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <project version="2">
 	<pipeline>
-		<pass name="Simple" type="shader" active="true" patchverts="1">
-			<shader type="vs" path="shaders\Final Project_SimpleVS.glsl" entry="main" />
-			<shader type="ps" path="shaders\Final Project_SimplePS.glsl" entry="main" />
+		<pass name="BoxShader" type="shader" active="true" patchverts="1">
+			<shader type="vs" path="shaders\BoxShaderVS.glsl" entry="main" />
+			<shader type="ps" path="shaders\BoxShaderPS.glsl" entry="main" />
 			<inputlayout>
 				<item value="Position" semantic="POSITION" />
-				<item value="Normal" semantic="NORMAL" />
 				<item value="Texcoord" semantic="TEXCOORD0" />
 			</inputlayout>
 			<rendertexture />
@@ -23,6 +22,13 @@
 			<variables>
 				<variable type="float4x4" name="matVP" system="ViewProjection" />
 				<variable type="float" name="time" system="Time" />
+				<variable type="float3" name="speed">
+					<row>
+						<value>0.25</value>
+						<value>0.25</value>
+						<value>0.25</value>
+					</row>
+				</variable>
 			</variables>
 			<macros />
 		</pass>
@@ -31,8 +37,6 @@
 			<shader type="ps" path="shaders\SunShaderPS.glsl" entry="main" />
 			<inputlayout>
 				<item value="Position" semantic="POSITION" />
-				<item value="Normal" semantic="NORMAL" />
-				<item value="Texcoord" semantic="TEXCOORD0" />
 			</inputlayout>
 			<rendertexture />
 			<items>
@@ -50,29 +54,32 @@
 			<itemvalues />
 			<variables>
 				<variable type="float4x4" name="matVP" system="ViewProjection" />
-				<variable type="float4x4" name="matGeo" system="GeometryTransform" />
 				<variable type="float" name="time" system="Time" />
+				<variable type="float" name="speed">
+					<row>
+						<value>1</value>
+					</row>
+				</variable>
 			</variables>
 			<macros />
 		</pass>
 	</pipeline>
 	<objects>
-		<object type="texture" path="Assets\silver-metal-texture-background-design_46250-2268.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat" />
-		<object type="texture" path="Assets\stoney.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat" />
-		<object type="texture" path="Assets\metal-texture.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat">
-			<bind slot="0" name="Simple" />
+		<object type="texture" path="assets\metal_editted.jpg" vflip="false" min_filter="Linear" mag_filter="Nearest" wrap_s="Repeat" wrap_t="Repeat">
+			<bind slot="0" name="BoxShader" />
 		</object>
 	</objects>
 	<cameras />
 	<settings>
+		<entry type="property" name="BoxShader" item="pipe" />
+		<entry type="file" name="BoxShader" shader="vs" />
+		<entry type="file" name="BoxShader" shader="ps" />
 		<entry type="file" name="SunShader" shader="vs" />
 		<entry type="file" name="SunShader" shader="ps" />
-		<entry type="file" name="Simple" shader="ps" />
-		<entry type="file" name="Simple" shader="vs" />
 		<entry type="camera" fp="false">
-			<distance>6</distance>
-			<pitch>-15</pitch>
-			<yaw>25</yaw>
+			<distance>11</distance>
+			<pitch>31</pitch>
+			<yaw>144</yaw>
 			<roll>360</roll>
 		</entry>
 		<entry type="clearcolor" r="0" g="0" b="0" a="0" />

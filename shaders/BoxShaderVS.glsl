@@ -2,14 +2,12 @@
 
 uniform mat4 matVP;
 uniform float time;
+uniform vec3 speed;
 
 layout (location = 0) in vec3 pos;
-layout (location = 1) in vec3 normal;
-layout (location = 2) in vec2 textcoord;
+layout (location = 1) in vec2 texCoord;
 
 out vec2 uv;
-
-
 out vec4 color;
 
 mat4 rotate(vec3 rotation) {
@@ -35,13 +33,7 @@ mat4 rotate(vec3 rotation) {
 }
 
 void main() {
-	// ToDo: apply metal texture
-		uv = textcoord;
-	// This might be helpful... https://www.lighthouse3d.com/tutorials/glsl-tutorial/texturing-with-images/
-	color = vec4(abs(normal), 1.0);
-	
-	// Rotating Cube Animation
-	vec3 speed = vec3(0.25, 0.25, 0.25);
 	vec3 animation = vec3(time * speed);
 	gl_Position = matVP * rotate(animation) * vec4(pos, 1);
+	uv = texCoord;
 }
