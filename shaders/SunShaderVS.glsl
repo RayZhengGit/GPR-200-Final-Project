@@ -8,8 +8,8 @@ layout (location = 0) in vec3 pos;
 
 out vec4 color;
 
-const float RADIUS = 3;
-const float SCALE_FACTOR = 0.75;
+const float RADIUS = 5;
+const float SCALE_FACTOR = 0.5;
 const vec3 SUN_COLOR = vec3(255, 228, 105) / vec3(255);
 
 mat4 translate(vec3 translation) {

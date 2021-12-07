@@ -72,19 +72,17 @@
 	<cameras />
 	<settings>
 		<entry type="property" name="SunShader" item="pipe" />
-		<entry type="file" name="BoxShader" shader="vs" />
-		<entry type="file" name="BoxShader" shader="ps" />
 		<entry type="file" name="SunShader" shader="vs" />
 		<entry type="file" name="SunShader" shader="ps" />
 		<entry type="pinned" name="boxSpeed" owner="BoxShader" />
 		<entry type="pinned" name="sunSpeed" owner="SunShader" />
 		<entry type="camera" fp="false">
-			<distance>11</distance>
+			<distance>13</distance>
 			<pitch>31</pitch>
 			<yaw>144</yaw>
 			<roll>360</roll>
 		</entry>
-		<entry type="clearcolor" r="0" g="0" b="0" a="0" />
+		<entry type="clearcolor" r="0" g="0.196078435" b="0.392156869" a="0" />
 		<entry type="usealpha" val="false" />
 	</settings>
 	<plugindata />
