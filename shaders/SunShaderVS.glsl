@@ -1,16 +1,16 @@
 #version 330
 
+layout (location = 0) in vec3 position;
+
 uniform mat4 matVP;
 uniform float time;
-uniform float sunSpeed;
-
-layout (location = 0) in vec3 pos;
 
 out vec4 color;
 
-const float RADIUS = 5;
-const float SCALE_FACTOR = 0.5;
-const vec3 SUN_COLOR = vec3(255, 228, 105) / vec3(255);
+const float SPEED = 0.75;
+const float RADIUS = 1.15;
+const float SCALE_FACTOR = 0.15;
+const vec3 COLOR = vec3(255, 228, 105) / vec3(255);
 
 mat4 translate(vec3 translation) {
 	return mat4(
@@ -31,10 +31,10 @@ mat4 matScale(vec3 factor) {
 }
 
 void main() {
-	float sunX = RADIUS * cos(time * sunSpeed);
-	float sunY = RADIUS * sin(time * sunSpeed);
+	float sunX = RADIUS * cos(time * SPEED);
+	float sunY = RADIUS * sin(time * SPEED);
 	
-	mat4 myGeo = translate(vec3(sunX, sunY, 0)) * matScale(vec3(SCALE_FACTOR));
-    gl_Position = matVP * myGeo * vec4(pos, 1);
-    color = vec4(SUN_COLOR, 1.0);
+	mat4 myMatGeo = translate(vec3(sunX, sunY, 0)) * matScale(vec3(SCALE_FACTOR));
+    gl_Position = matVP * myMatGeo * vec4(position, 1);
+    color = vec4(COLOR, 1.0);
 }

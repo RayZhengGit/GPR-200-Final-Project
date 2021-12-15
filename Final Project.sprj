@@ -7,6 +7,7 @@
 			<inputlayout>
 				<item value="Position" semantic="POSITION" />
 				<item value="Texcoord" semantic="TEXCOORD0" />
+				<item value="Normal" />
 			</inputlayout>
 			<rendertexture />
 			<items>
@@ -24,9 +25,50 @@
 				<variable type="float" name="time" system="Time" />
 				<variable type="float3" name="boxSpeed">
 					<row>
-						<value>0.25</value>
-						<value>0.25</value>
-						<value>0.25</value>
+						<value>0.100000001</value>
+						<value>0.100000001</value>
+						<value>0.100000001</value>
+					</row>
+				</variable>
+				<variable type="float3" name="diffuse_albedo">
+					<row>
+						<value>1</value>
+						<value>1</value>
+						<value>1</value>
+					</row>
+				</variable>
+				<variable type="float" name="specular_power">
+					<row>
+						<value>128</value>
+					</row>
+				</variable>
+				<variable type="float3" name="specular_albedo">
+					<row>
+						<value>0.699999988</value>
+						<value>0.699999988</value>
+						<value>0.699999988</value>
+					</row>
+				</variable>
+				<variable type="float3" name="ambient">
+					<row>
+						<value>0</value>
+						<value>0</value>
+						<value>0</value>
+					</row>
+				</variable>
+				<variable type="bool" name="isPhongLighting">
+					<row>
+						<value>false</value>
+					</row>
+				</variable>
+				<variable type="bool" name="isGouraudLighting">
+					<row>
+						<value>false</value>
+					</row>
+				</variable>
+				<variable type="bool" name="isBlinnPhongLighting">
+					<row>
+						<value>true</value>
 					</row>
 				</variable>
 			</variables>
@@ -55,11 +97,6 @@
 			<variables>
 				<variable type="float4x4" name="matVP" system="ViewProjection" />
 				<variable type="float" name="time" system="Time" />
-				<variable type="float" name="sunSpeed">
-					<row>
-						<value>0.75</value>
-					</row>
-				</variable>
 			</variables>
 			<macros />
 		</pass>
@@ -72,12 +109,19 @@
 	<cameras />
 	<settings>
 		<entry type="property" name="SunShader" item="pipe" />
+		<entry type="file" name="BoxShader" shader="vs" />
+		<entry type="file" name="BoxShader" shader="ps" />
 		<entry type="file" name="SunShader" shader="vs" />
-		<entry type="file" name="SunShader" shader="ps" />
 		<entry type="pinned" name="boxSpeed" owner="BoxShader" />
-		<entry type="pinned" name="sunSpeed" owner="SunShader" />
+		<entry type="pinned" name="diffuse_albedo" owner="BoxShader" />
+		<entry type="pinned" name="specular_power" owner="BoxShader" />
+		<entry type="pinned" name="specular_albedo" owner="BoxShader" />
+		<entry type="pinned" name="ambient" owner="BoxShader" />
+		<entry type="pinned" name="isPhongLighting" owner="BoxShader" />
+		<entry type="pinned" name="isGouraudLighting" owner="BoxShader" />
+		<entry type="pinned" name="isBlinnPhongLighting" owner="BoxShader" />
 		<entry type="camera" fp="false">
-			<distance>13</distance>
+			<distance>4</distance>
 			<pitch>31</pitch>
 			<yaw>144</yaw>
 			<roll>360</roll>

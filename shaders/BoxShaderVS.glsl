@@ -1,14 +1,26 @@
 #version 330
 
+layout (location = 0) in vec4 position;
+layout (location = 1) in vec2 texCoord;
+layout (location = 2) in vec3 normal;
+
 uniform mat4 matVP;
 uniform float time;
 uniform vec3 boxSpeed;
 
-layout (location = 0) in vec3 pos;
-layout (location = 1) in vec2 texCoord;
+uniform vec3 diffuse_albedo;
+uniform vec3 specular_albedo;
+uniform float specular_power;
+uniform vec3 ambient; // Gouraud only
 
+out vec3 N;
+out vec3 L;
+out vec3 V;
 out vec2 uv;
-out vec4 color;
+out vec3 gouraudLighting;
+
+const float SUN_SPEED = 0.75;
+const float SUN_RADIUS = 1.15;
 
 mat4 rotate(vec3 rotation) {
 	mat4 matRotationX = mat4(
@@ -34,6 +46,26 @@ mat4 rotate(vec3 rotation) {
 
 void main() {
 	vec3 animation = vec3(time * boxSpeed);
-	gl_Position = matVP * rotate(animation) * vec4(pos, 1);
+	mat4 myMatGeo = rotate(animation);
+	gl_Position = matVP * myMatGeo * vec4(position);
 	uv = texCoord;
+	
+	float sunX = SUN_RADIUS * cos(time * SUN_SPEED);
+	float sunY = SUN_RADIUS * sin(time * SUN_SPEED);
+	vec3 light_pos = vec3(sunX, sunY, 0);
+	
+	vec4 P = myMatGeo * position;
+    N = mat3(myMatGeo) * normal;
+    L = light_pos - P.xyz;
+    V = -P.xyz;
+	
+	// Gouraud Lighting
+	vec3 gouraudN = normalize(mat3(myMatGeo) * normal);
+    vec3 gouraudL = normalize(light_pos - P.xyz);
+    vec3 gouraudV = normalize(-P.xyz);
+      
+    vec3 R = reflect(-gouraudL, gouraudN);
+    vec3 diffuse = max(dot(gouraudN, gouraudL), 0.0) * diffuse_albedo;
+    vec3 specular = pow(max(dot(R, gouraudV), 0.0), specular_power) * specular_albedo;
+	gouraudLighting = ambient + diffuse + specular;
 }
