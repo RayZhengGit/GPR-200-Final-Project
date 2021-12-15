@@ -1,4 +1,5 @@
 #version 330
+// Credit: OpenGL Programming Superbible Seventh Edition
 
 uniform sampler2D tex;
 

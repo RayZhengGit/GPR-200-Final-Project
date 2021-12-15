@@ -1,4 +1,5 @@
 #version 330
+// Credit: OpenGL Programming Superbible Seventh Edition
 
 layout (location = 0) in vec4 position;
 layout (location = 1) in vec2 texCoord;
